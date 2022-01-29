@@ -1,4 +1,4 @@
-# Twitter sentiment Analyzer - 
+# Twitter Setimental Analyzer
 
 
 
