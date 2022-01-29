@@ -1,6 +1,7 @@
 var btnTranslate = document.querySelector("#btn-translate");
 var txtInput = document.querySelector("#txt-input");
 var txtOutput = document.querySelector("#txt-output");
+let loadingWidget = document.querySelector(".loader")
 const serverUrl = "https://sentimental-analysis33.herokuapp.com/getSentiment";
 
 function getTranslatedUrl(text) {
@@ -26,10 +27,14 @@ var requestOptions = {
 
 btnTranslate.addEventListener("click", () => {
   var inputText = txtInput.value;
-
+  loadingWidget.style.display = "block"
+  txtOutput.style.display = "none"
   fetch("https://sentimental-analysis33.herokuapp.com/getSentiment", requestOptions)
   .then(response => response.json())
   .then(result => {
+      loadingWidget.style.display = "none"
+      txtOutput.style.display = "block"
+      console.log(result);
       txtOutput.innerText = result.final_sentiment
   })
   
